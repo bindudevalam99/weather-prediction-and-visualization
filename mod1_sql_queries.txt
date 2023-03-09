@@ -1,3 +1,5 @@
+#these queries deal with module1
+
 ## Give the count of the minimum number of days for the time when temperature reduced                      1st Question
 SELECT 
       count(*) AS min_no_of_days
