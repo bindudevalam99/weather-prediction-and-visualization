@@ -1,0 +1,134 @@
+## Give the count of the minimum number of days for the time when temperature reduced                      1st Question
+SELECT 
+      count(*) AS min_no_of_days
+FROM 
+      weather
+WHERE 
+     `Temperature (°F)` < `Average Temperature (°F)`;
+
+
+## Find the temperature as Cold/Hot by using the Case & avg of values of the given dataset                 2nd Question
+SELECT 
+      CASE
+        WHEN `Temperature (°F)` < `Average Temperature (°F)`
+        THEN 'Cold'
+        WHEN `Temperature (°F)` > `Average Temperature (°F)`
+        THEN 'Hot'
+        ELSE 'Mild' END AS Temperature
+FROM 
+      weather
+
+
+## Can you check all 4 consecutive days when the temperature was below 30 Fahrenheit                       3rd Question
+WITH cte AS (
+      SELECT 
+           date, 
+           `Temperature (°F)`, 
+		   LAG(`Temperature (°F)`) OVER (ORDER BY date) AS prev_temp,
+           SUM(CASE WHEN `Temperature (°F)` < 30 THEN 1 ELSE 0 END) 
+           OVER (ORDER BY 
+                      date 
+                      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS consec_below_30
+       FROM 
+		   weather
+)
+SELECT 
+      distinct(date) 
+FROM 
+      cte
+WHERE 
+      `Temperature (°F)` < 30 AND prev_temp < 30 AND consec_below_30 >= 4
+ORDER BY
+      date;
+
+
+
+## Can you find the maximum number of days for which temperature dropped                                   4th Question
+SELECT
+     COUNT(`Temperature (°F)`) AS max_no_of_days
+FROM
+     weather
+WHERE 
+     `Temperature (°F)` < `Average Temperature (°F)`;
+
+
+## Can you find the average of average humidity from the dataset                                           5th Question
+## ( NOTE: should contain the following clauses: group by, order by, date )
+SELECT
+     Date,
+     AVG(`Average humidity (%)`) AS Average_per_date
+FROM
+     weather
+GROUP BY
+     Date
+ORDER BY
+     Date;
+
+
+## Use the GROUP BY clause on the Date column and make a query to fetch details for                        6th Question
+##  average windspeed (which is now windspeed done in task 3) 
+SELECT
+	Date,
+    ROUND(AVG(`Average windspeed (mph)`),3) Avg_windspeed_per_date,
+    (SELECT
+         ROUND(AVG(`Average windspeed (mph)`),3) 
+     FROM
+         weather
+    ) AS Avg_windspeed
+FROM
+    weather
+GROUP BY
+    Date
+ORDER BY 
+    Date;
+
+
+## Please add the data in the dataset for 2034 & 2035 as well as forecast predictions for these years        7th Question
+# ( NOTE: data consistency and uniformity should be maintained )
+## This question can not be solved with the help of SQL, we've to do it with the help of python and
+# when it return the predictions for the years 2034 & 2035 then we can update our table by inserting 
+# those values in our table.
+
+
+## If the maximum gust speed increases from 55mph, fetch the details for the next 4 days                   8th Question
+SELECT
+      DISTINCT(Date) DATE,
+     `Maximum gust speed (mph)`   
+FROM
+     weather
+WHERE
+     `Maximum gust speed (mph)` > 55
+ORDER BY
+     `Maximum gust speed (mph)`,
+     Date
+LIMIT 4;
+
+
+## Find the number of days when the temperature went below 0 degrees Celsius                               9th Question
+WITH celcius AS
+    (SELECT
+           (`Temperature (°F)` - 32)*(5/9) as temp_in_Celcius
+     FROM
+          weather
+     WHERE
+           (`Temperature (°F)` - 32)*(5/9) < 0
+    )
+SELECT    
+     count(*) num_of_days
+FROM
+     celcius;
+     
+     
+## Create another table with a “Foreign key” relation with the existing given data set.                   10th Question
+ALTER TABLE weather
+ADD COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
+
+CREATE TABLE temperature (
+   average_temp INT PRIMARY KEY,
+   weather_id INT,
+   date DATE,
+   temperature FLOAT,
+   FOREIGN KEY (weather_id) REFERENCES weather(id)
+);
+
+select * from temperature
