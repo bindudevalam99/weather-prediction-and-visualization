@@ -31,4 +31,5 @@ This link has the complete project details - https://hicounselor.com/hc_projects
 given dataset - weather_dataset_stage1.csv
 The module 1 files - 1) text document that has SQL Queries - New Text Document.txt
                      2)python document which has done all code for preprocessing and cleaning - w1.pynb
-                     3) 
+                     3) excel sheet after preprocessing - module_1_weather
+The module 2 file - power BI file - final_weather.pbix
