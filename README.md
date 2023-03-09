@@ -28,4 +28,7 @@ You have to create a dashboard for the same using different statistical graphs a
 
 
 This link has the complete project details - https://hicounselor.com/hc_projects
-The module 1 files - 
+given dataset - weather_dataset_stage1.csv
+The module 1 files - 1) text document that has SQL Queries - New Text Document.txt
+                     2)python document which has done all code for preprocessing and cleaning - w1.pynb
+                     3) 
