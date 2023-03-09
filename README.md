@@ -25,3 +25,7 @@ Different concepts of SQL will be used in this process, such as aggregating the 
 Module 2: Visualizing data using Power BI:
 You will use the weather datasets and the data table you created to visualize what the numbers in and behind the data want to convey. 
 You have to create a dashboard for the same using different statistical graphs and diagrams for a visual understanding and analysis.
+
+
+This link has the complete project details - https://hicounselor.com/hc_projects
+The module 1 files - 
