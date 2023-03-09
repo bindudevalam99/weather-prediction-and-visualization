@@ -1,0 +1,27 @@
+# data-analytics-and-data-visualization
+This data contains day wise weather attributes from 2022 to July 2033 (predicted data)
+Columns are as follows :
+
+Date	Average temperature (°F)
+Average humidity (%)	Average dewpoint (°F)
+Average barometer (in)	Average windspeed (mph)
+Average gust speed (mph)	Average direction (°degree)
+Rainfall for month (in)	Rainfall for year (in)
+Maximum rain per minute	Maximum temperature (°F)
+Minimum temperature (°F)	Maximum humidity (%)
+Minimum humidity (%)	Maximum pressure
+Minimum pressure	Maximum wind speed (mph)
+Maximum gust speed (mph)	Maximum heat index (°F)
+
+NOTE:the given data requires cleaning and analysis to proceed further for any analysis.
+
+The Project will consist of 2 modules:
+
+Module 1: Pre-processing, Analysing data using Python and SQL.
+In this module, you will query the dataset using structured query language to gain insights from the database. 
+The problem statements to be solved will be provided to you and you need to provide the solution for the same using your logic. 
+Different concepts of SQL will be used in this process, such as aggregating the data, grouping the data, ordering the data, etc.
+
+Module 2: Visualizing data using Power BI:
+You will use the weather datasets and the data table you created to visualize what the numbers in and behind the data want to convey. 
+You have to create a dashboard for the same using different statistical graphs and diagrams for a visual understanding and analysis.
